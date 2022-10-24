@@ -30,9 +30,10 @@ public class CityControllerIT {
 	@Autowired
 	private ObjectMapper objectMapper;
 	
+
 	@Test
 	public void findAllShouldReturnAllResourcesSortedByName() throws Exception {
-		
+				
 		ResultActions result =
 				mockMvc.perform(get("/cities")
 					.contentType(MediaType.APPLICATION_JSON));
@@ -42,7 +43,7 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$[1].name").value("Belém"));
 		result.andExpect(jsonPath("$[2].name").value("Brasília"));
 	}
-	
+
 	@Test
 	public void insertShouldInsertResource() throws Exception {
 
@@ -60,6 +61,7 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$.name").value("Recife"));
 	}
 
+
 	@Test
 	public void deleteShouldReturnNoContentWhenIndependentId() throws Exception {		
 		
@@ -71,6 +73,7 @@ public class CityControllerIT {
 		
 		result.andExpect(status().isNoContent());
 	}
+
 
 	@Test
 	public void deleteShouldReturnNotFoundWhenNonExistingId() throws Exception {		
